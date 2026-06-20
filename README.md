@@ -19,12 +19,9 @@ Key analyses performed:
 
 ---
 
-## Block Diagram
+## 🏗️ Block Diagram
 
-<p align="center">
-  <img src="<img width="1210" height="530" alt="image" src="https://github.com/user-attachments/assets/d6339fa7-b664-4b71-910e-bd6010450d31" />
-" width="800">
-</p>
+![Block Diagram](https://github.com/user-attachments/assets/d6339fa7-b664-4b71-910e-bd6010450d31)
 
 # 🔵 Stage 1: Voltage Amplification
 
