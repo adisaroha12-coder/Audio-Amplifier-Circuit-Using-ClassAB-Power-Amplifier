@@ -1,176 +1,283 @@
-# Class-AB Audio Power Amplifier
+# 🎵 Class-AB Audio Power Amplifier
 
-## Overview
-
-This project presents the design and simulation of a **Class-AB Audio Power Amplifier** in LTspice. The amplifier consists of a voltage amplification stage, a diode-based Class-AB bias network, and a complementary push-pull BJT output stage for efficient audio power delivery to an 8 Ω load.
-
-## Features
-
-- Three-stage amplifier architecture
-- Op-amp based voltage amplification
-- Diode-compensated Class-AB biasing
-- Complementary push-pull output stage
-- Low crossover distortion
-- Frequency response analysis
-- THD measurement using Fourier analysis
-- Power and efficiency evaluation
+A three-stage Class-AB audio power amplifier designed and simulated in **LTspice**. The amplifier consists of a voltage amplification stage, a Class-AB bias network, and a complementary push-pull power output stage for low-distortion audio amplification.
 
 ---
 
-## Circuit Architecture
+## 📌 Project Overview
 
-### Stage 1: Voltage Amplification
+The objective of this project was to design and analyze a low-distortion audio amplifier capable of driving an **8 Ω speaker load** while maintaining good efficiency and low Total Harmonic Distortion (THD).
 
-- Input coupling network (C1-R1)
-- UniversalOpamp2 voltage amplifier
-- Closed-loop gain configuration
-- High input impedance
+Key analyses performed:
 
-### Stage 2: Interstage Coupling & Biasing
-
-- AC coupling network (C2-R5)
-- Diode bias network (D1-D2)
-- Bias stabilization network
-- Crossover distortion reduction
-
-### Stage 3: Power Output Stage
-
-- Complementary TIP41/TIP42 transistor pair
-- Push-pull Class-AB operation
-- Output coupling capacitor
-- 8 Ω load interface
+- AC Analysis
+- Transient Analysis
+- Fourier (FFT) Analysis
+- Power Analysis
+- Efficiency Calculation
+- THD Measurement
 
 ---
 
-## Block Diagram
+## 🏗️ System Architecture
 
 ```text
-Audio Input
-     │
-     ▼
-┌─────────────────┐
-│ Voltage         │
-│ Amplification   │
-│ (UniversalOpamp)│
-└─────────────────┘
-     │
-     ▼
-┌─────────────────┐
-│ Coupling &      │
-│ Class-AB Bias   │
-│ Network         │
-└─────────────────┘
-     │
-     ▼
-┌─────────────────┐
-│ Push-Pull       │
-│ Power Stage     │
-│ TIP41 / TIP42   │
-└─────────────────┘
-     │
-     ▼
-    8 Ω Load
+┌────────────────────┐
+│ 🎵 AUDIO INPUT     │
+│ 1 kHz Sine Wave    │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│ 🔵 STAGE 1         │
+│ Voltage Amplifier  │
+│ Universal Op-Amp   │
+│ Gain ≈ 6           │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│ 🟢 STAGE 2         │
+│ Coupling & Biasing │
+│ D1, D2, R7, R8     │
+│ Class-AB Bias      │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│ 🟠 STAGE 3         │
+│ Push-Pull Output   │
+│ TIP41 + TIP42      │
+│ Power Amplifier    │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│ 🔴 8Ω SPEAKER      │
+│ Audio Output       │
+└────────────────────┘
 ```
 
 ---
 
-## Design Specifications
+# 🔵 Stage 1: Voltage Amplification
 
-| Parameter | Value |
+### Components
+- UniversalOpamp2
+- C1
+- R1
+- R2
+- R3
+- R4
+
+### Functions
+
+- Blocks DC from the input source.
+- Provides high input impedance.
+- Amplifies the audio signal voltage.
+- Prepares the signal for the power stage.
+
+### Input Coupling Network
+
+| Component | Value |
 |------------|---------|
-| Supply Voltage | ±12 V |
-| Load Resistance | 8 Ω |
-| Amplifier Class | Class-AB |
-| Simulation Tool | LTspice |
-| Input Frequency | 1 kHz |
-| Output Stage | TIP41 / TIP42 |
+| C1 | 1 µF |
+| R1 | 100 kΩ |
+
+Cutoff Frequency:
+
+\[
+f_c = \frac{1}{2\pi RC}
+\]
+
+\[
+f_c \approx 1.59 Hz
+\]
 
 ---
 
-## Performance Results
+# 🟢 Stage 2: Coupling & Class-AB Bias Network
 
-### Frequency Response
+### Components
+
+- C2
+- R5
+- D1
+- D2
+- R6
+- C3
+- R7
+- R8
+
+### Functions
+
+- Blocks op-amp DC offset.
+- Generates Class-AB bias voltage.
+- Reduces crossover distortion.
+- Provides stable transistor biasing.
+
+### Interstage Coupling Network
+
+| Component | Value |
+|------------|---------|
+| C2 | 47 µF |
+| R5 | 220 kΩ |
+
+Cutoff Frequency:
+
+\[
+f_c \approx 0.015 Hz
+\]
+
+### Bias Voltage
+
+Two silicon diodes generate approximately:
+
+\[
+V_{bias} \approx 1.4V
+\]
+
+which keeps both output transistors slightly ON.
+
+---
+
+# 🟠 Stage 3: Push-Pull Power Amplifier
+
+### Components
+
+- TIP41
+- TIP42
+- R9
+- R10
+- C6
+- R11
+
+### Functions
+
+- Provides current amplification.
+- Drives low impedance loads.
+- Delivers power to the speaker.
+- Maintains Class-AB operation.
+
+### Output Coupling Network
+
+| Component | Value |
+|------------|---------|
+| C6 | 470 µF |
+| R11 | 8 Ω |
+
+Cutoff Frequency:
+
+\[
+f_c \approx 42.3 Hz
+\]
+
+---
+
+# 📈 Performance Results
+
+## Frequency Response
 
 | Parameter | Value |
 |------------|---------|
 | Lower Cutoff Frequency | ≈ 42 Hz |
 | Upper Cutoff Frequency | ≈ 250 kHz |
 
-### Distortion Performance
+---
+
+## Power Performance
 
 | Parameter | Value |
 |------------|---------|
-| THD | ≈ 0.025 % |
-
-### Power Performance
-
-| Parameter | Value |
-|------------|---------|
+| Load Resistance | 8 Ω |
 | Output Power | ≈ 1.43 W |
 | Input Power | ≈ 2.52 W |
 | Efficiency | ≈ 56.8 % |
 
 ---
 
-## Simulations Performed
+## Distortion Performance
 
-### AC Analysis
+### Total Harmonic Distortion (THD)
 
-- Gain measurement
-- Bandwidth estimation
-- Cutoff frequency determination
+\[
+THD=\frac{\sqrt{V_2^2+V_3^2+V_4^2+\cdots}}{V_1}\times100\%
+\]
 
-### Transient Analysis
+Measured THD:
 
-- Output waveform verification
-- Clipping detection
-- Dynamic response evaluation
-
-### Fourier Analysis
-
-- Harmonic spectrum analysis
-- Total Harmonic Distortion (THD) measurement
-
-### Power Analysis
-
-- Output power measurement
-- Input power measurement
-- Efficiency calculation
+| Operating Point | THD |
+|-----------------|------|
+| Optimized Point | ≈ 0.025 % |
+| Near Maximum Output | ≈ 0.289 % |
 
 ---
 
-## Key Results
+# 🔬 Simulations Performed
 
-- Achieved Class-AB operation with low crossover distortion
-- Obtained THD as low as **0.025%**
-- Delivered approximately **1.43 W** into an **8 Ω load**
-- Achieved approximately **56.8% efficiency**
-- Maintained stable operation across the audio frequency range
+## AC Analysis
+
+- Gain Measurement
+- Bandwidth Estimation
+- Cutoff Frequency Determination
+
+## Transient Analysis
+
+- Output Waveform Verification
+- Clipping Analysis
+- Dynamic Response Study
+
+## Fourier Analysis
+
+- Harmonic Spectrum Analysis
+- THD Measurement
+
+## Power Analysis
+
+- Output Power Calculation
+- Input Power Calculation
+- Efficiency Evaluation
 
 ---
 
-## Tools Used
+# 📊 Key Results
+
+✅ Three-stage Class-AB architecture
+
+✅ Output Power ≈ 1.43 W
+
+✅ Efficiency ≈ 56.8 %
+
+✅ THD as low as 0.025 %
+
+✅ Stable operation into 8 Ω load
+
+✅ Audio-band amplification with low distortion
+
+---
+
+# 🛠️ Tools Used
 
 - LTspice
 - Analog Circuit Design
 - AC Analysis
 - Fourier Analysis
-- Transient Analysis
+- Transient Simulation
 
 ---
 
-## Future Improvements
+# 🚀 Future Improvements
 
 - PCB implementation
-- Thermal analysis
-- Speaker protection circuit
+- Thermal analysis of output transistors
+- Speaker protection circuitry
 - Tone control stage
 - Higher power output design
 
 ---
 
-## Author
+# 👨‍💻 Author
 
 **Aditya**
 
-Analog Circuit Design • Audio Electronics • LTspice Simulation
+Analog Electronics • Audio Amplifier Design • LTspice Simulation
