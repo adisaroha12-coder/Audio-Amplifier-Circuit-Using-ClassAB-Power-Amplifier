@@ -19,46 +19,12 @@ Key analyses performed:
 
 ---
 
-## 🏗️ System Architecture
+## Block Diagram
 
-```text
-┌────────────────────┐
-│ 🎵 AUDIO INPUT     │
-│ 1 kHz Sine Wave    │
-└─────────┬──────────┘
-          │
-          ▼
-┌────────────────────┐
-│ 🔵 STAGE 1         │
-│ Voltage Amplifier  │
-│ Universal Op-Amp   │
-│ Gain ≈ 6           │
-└─────────┬──────────┘
-          │
-          ▼
-┌────────────────────┐
-│ 🟢 STAGE 2         │
-│ Coupling & Biasing │
-│ D1, D2, R7, R8     │
-│ Class-AB Bias      │
-└─────────┬──────────┘
-          │
-          ▼
-┌────────────────────┐
-│ 🟠 STAGE 3         │
-│ Push-Pull Output   │
-│ TIP41 + TIP42      │
-│ Power Amplifier    │
-└─────────┬──────────┘
-          │
-          ▼
-┌────────────────────┐
-│ 🔴 8Ω SPEAKER      │
-│ Audio Output       │
-└────────────────────┘
-```
-
----
+<p align="center">
+  <img src="<img width="1210" height="530" alt="image" src="https://github.com/user-attachments/assets/d6339fa7-b664-4b71-910e-bd6010450d31" />
+" width="800">
+</p>
 
 # 🔵 Stage 1: Voltage Amplification
 
