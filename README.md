@@ -120,9 +120,10 @@ The measured efficiency improved compared to a basic complementary emitter-follo
 
 ## 📊 Transient Analysis
 
-<p align="center">
-  <img src="images/transient_response.png" width="900">
-</p>
+<
+  <img src="<img width="1896" height="446" alt="image" src="https://github.com/user-attachments/assets/ee9d5f0f-4706-407a-b005-4607aedecfc1" />
+" width="900">
+
 
 **Figure 2:** Input and output waveforms at 1 kHz.
 
