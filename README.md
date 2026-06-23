@@ -1,279 +1,286 @@
 # 🎵 Complementary Darlington Class-AB Audio Power Amplifier
 
-A three-stage **Class-AB audio power amplifier** designed and simulated in **LTspice**. The amplifier combines a voltage amplification stage, a diode-biased Class-AB network, and a complementary **Darlington push-pull output stage** to achieve low distortion, high current gain, and efficient power delivery to an **8 Ω speaker load**.
+A three-stage **Class-AB audio power amplifier** designed and simulated in **LTspice**. The amplifier combines a voltage amplification stage, a three-diode Class-AB bias network, and a complementary **Darlington push-pull output stage** to achieve low distortion, high current gain, and efficient power delivery to an **8 Ω speaker load**.
 
 ---
 
-# 📌 Project Overview
+## 📌 Project Overview
 
 The objective of this project was to design and analyze a low-distortion audio power amplifier capable of driving an **8 Ω load** while maintaining good efficiency and low Total Harmonic Distortion (THD).
 
-The design employs:
+### Key Features
 
-* Non-inverting voltage amplifier
-* Three-diode Class-AB bias network
-* Complementary Darlington emitter-follower output stage
-* Negative feedback for gain stabilization
+- Three-stage Class-AB architecture
+- Complementary Darlington output stage
+- Three-diode Class-AB bias network
+- High current gain output stage
+- Low crossover distortion
+- Low THD operation
+- Efficient power delivery to 8 Ω load
 
-Key analyses performed:
+### Analyses Performed
 
-* AC Analysis
-* Transient Analysis
-* Fourier (FFT) Analysis
-* Power Analysis
-* Efficiency Calculation
-* THD Measurement
+- Transient Analysis
+- Fourier (FFT) Analysis
+- Power Analysis
+- Efficiency Calculation
+- THD Measurement
 
 ---
 
-# 🏗️ Amplifier Architecture
+## 📸 Circuit Schematic
+
+<p align="center">
+  <img src="images/schematic.png" width="900">
+</p>
+
+**Figure 1:** Complete LTspice schematic of the Complementary Darlington Class-AB Audio Power Amplifier.
+
+---
+
+## 🏗️ Amplifier Architecture
 
 The amplifier consists of three stages:
 
-## 🔵 Stage 1 – Voltage Amplification Stage
+### 🔵 Stage 1 – Voltage Amplification Stage
 
-### Components
+#### Components
 
-* UniversalOpamp2
-* Input coupling capacitor
-* Feedback resistors
+- UniversalOpamp2
+- Feedback Network
+- Input Coupling Capacitor
 
-### Functions
+#### Functions
 
-* Provides voltage gain.
-* Offers high input impedance.
-* Amplifies the incoming audio signal.
-* Drives the power output stage.
+- Provides voltage amplification
+- Offers high input impedance
+- Amplifies the input audio signal
+- Drives the output power stage
 
-### Closed-Loop Gain
-
-The op-amp is configured as a non-inverting amplifier:
-
-[
-A_v = 1+\frac{R_f}{R_g}
-]
-
-[
-A_v = 1+\frac{70k}{10k}
-]
-
-[
-A_v = 8
-]
-
-[
-A_v = 18.06\ dB
-]
+The op-amp is configured as a non-inverting amplifier with a closed-loop gain of approximately **8 V/V**.
 
 ---
 
-## 🟢 Stage 2 – Class-AB Bias Network
+### 🟢 Stage 2 – Three-Diode Class-AB Bias Network
 
-### Components
+#### Components
 
-* D1, D2, D3 (1N4148)
-* Bias resistors
-* Coupling capacitors
+- D1, D2, D3 (1N4148)
+- Bias Resistors
+- Coupling Capacitors
 
-### Functions
+#### Functions
 
-* Establishes Class-AB operation.
-* Generates bias voltage for the output stage.
-* Minimizes crossover distortion.
-* Improves linearity around the zero-crossing region.
+- Establishes Class-AB operation
+- Generates bias voltage for output transistors
+- Reduces crossover distortion
+- Improves output waveform linearity
 
-### Biasing Principle
+#### Bias Voltage
 
-The three silicon diodes generate approximately:
+```
+Vbias ≈ 3 × 0.7 V
+Vbias ≈ 2.1 V
+```
 
-[
-V_{bias} \approx 2.1V
-]
-
-which partially forward-biases the output transistors and significantly reduces crossover distortion.
+This keeps both halves of the output stage slightly conducting around the zero-crossing region.
 
 ---
 
-## 🟠 Stage 3 – Complementary Darlington Output Stage
+### 🟠 Stage 3 – Complementary Darlington Output Stage
 
-### Components
+#### Components
 
-* TIP31C Darlington Pair
-* TIP32C Darlington Pair
-* Emitter resistors (0.5 Ω)
-* 8 Ω Load
+- TIP31C Darlington Pair
+- TIP32C Darlington Pair
+- 0.5 Ω Emitter Resistors
+- 8 Ω Load
 
-### Functions
+#### Functions
 
-* Provides high current gain.
-* Drives low-impedance speaker loads.
-* Delivers output power efficiently.
-* Reduces loading on the voltage amplifier stage.
+- Provides high current gain
+- Drives low impedance speaker loads
+- Delivers output power efficiently
+- Reduces loading on the voltage amplifier stage
 
-### Why Darlington Pairs?
+#### Why Darlington Pairs?
 
 The Darlington configuration was selected to:
 
-* Increase effective current gain.
-* Reduce drive current requirements.
-* Improve load-driving capability.
-* Improve large-signal performance.
-* Enable efficient power delivery into an 8 Ω load.
+- Increase effective current gain
+- Reduce drive current requirements
+- Improve load-driving capability
+- Improve large-signal performance
+- Enable efficient power delivery into an 8 Ω load
 
-The measured efficiency improved compared to the single-transistor output stage due to reduced loading and improved output swing.
-
----
-
-# 📈 Performance Results
-
-## Voltage Gain
-
-| Parameter    | Value      |
-| ------------ | ---------- |
-| Voltage Gain | ≈ 8 V/V    |
-| Gain (dB)    | ≈ 18.06 dB |
+The measured efficiency improved compared to a basic complementary emitter-follower stage due to reduced loading and improved output voltage swing.
 
 ---
 
-## Frequency Response
+## 📊 Transient Analysis
 
-| Parameter              | Value      |
-| ---------------------- | ---------- |
-| Lower Cutoff Frequency | ≈ 35–40 Hz |
-| Upper Cutoff Frequency | > 700 kHz  |
-| Midband Gain           | ≈ 18 dB    |
+<p align="center">
+  <img src="images/transient_response.png" width="900">
+</p>
 
-The amplifier comfortably covers the entire audible frequency range (20 Hz – 20 kHz).
+**Figure 2:** Input and output waveforms at 1 kHz.
 
----
+### Results
 
-## ⚡ Power Performance
+| Parameter | Value |
+|------------|---------|
+| Input Peak Voltage | 1 V |
+| Output Peak Voltage | 8 V |
+| Voltage Gain | 8 V/V |
+| Voltage Gain (dB) | 18.06 dB |
 
-| Parameter       | Value    |
-| --------------- | -------- |
-| Supply Voltage  | ±12 V    |
-| Load Resistance | 8 Ω      |
-| Output Power    | ≈ 3.99 W |
-| Input Power     | ≈ 7.92 W |
-| Efficiency      | ≈ 50.4 % |
+### Observation
 
-### Output Voltage
-
-[
-V_{RMS}=\sqrt{PR}
-]
-
-[
-V_{RMS}=\sqrt{3.99 \times 8}
-]
-
-[
-V_{RMS}\approx 5.65V
-]
-
-[
-V_{PEAK}\approx 8V
-]
+The amplifier successfully amplifies a 1 V peak input signal to approximately 8 V peak while maintaining waveform integrity and low distortion.
 
 ---
 
-## 📊 Distortion Performance
+## ⚡ Output Power Analysis
 
-### Total Harmonic Distortion (THD)
+<p align="center">
+  <img src="images/output_power.png" width="900">
+</p>
 
-[
-THD=\frac{\sqrt{V_2^2+V_3^2+V_4^2+\cdots}}{V_1}\times100%
-]
+**Figure 3:** Instantaneous load power delivered to the 8 Ω speaker load.
 
-### Fourier Analysis Results
+### Result
 
-| Parameter             | Value   |
-| --------------------- | ------- |
-| Fundamental Frequency | 1 kHz   |
-| Fundamental Amplitude | 6.99 V  |
-| THD                   | 0.033 % |
+| Parameter | Value |
+|------------|---------|
+| Average Output Power | 3.99 W |
 
-The low THD demonstrates effective suppression of crossover distortion and good linearity of the Class-AB Darlington output stage.
+The amplifier delivers nearly 4 W of power to the load while maintaining low harmonic distortion.
 
 ---
 
-# 🔬 Simulations Performed
+## 🔋 Supply Power Analysis
 
-## AC Analysis
+<p align="center">
+  <img src="images/input_power.png" width="900">
+</p>
 
-* Voltage Gain Measurement
-* Bandwidth Estimation
-* Frequency Response Verification
+**Figure 4:** Power drawn from the ±12 V supply rails.
 
-## Transient Analysis
+### Result
 
-* Output Waveform Verification
-* Large-Signal Gain Validation
-* Clipping Analysis
-* Dynamic Response Study
-
-## Fourier Analysis
-
-* Harmonic Spectrum Analysis
-* THD Measurement
-* Distortion Characterization
-
-## Power Analysis
-
-* Output Power Calculation
-* Supply Power Calculation
-* Efficiency Evaluation
+| Parameter | Value |
+|------------|---------|
+| Average Input Power | 7.92 W |
 
 ---
 
-# 📊 Key Results
+## 📈 Efficiency Analysis
 
-✅ Three-stage Class-AB architecture
+Efficiency was calculated using:
 
-✅ Complementary Darlington output stage
+```
+η = (Pout / Pin) × 100
+η = (3.99 / 7.92) × 100
+η ≈ 50.4 %
+```
 
-✅ Three-diode Class-AB bias network
+### Result
 
-✅ Voltage Gain ≈ 8 V/V (18 dB)
+| Parameter | Value |
+|------------|---------|
+| Efficiency | 50.4 % |
 
-✅ Output Power ≈ 4 W into 8 Ω load
-
-✅ Efficiency ≈ 50.4 %
-
-✅ THD ≈ 0.033 %
-
-✅ Low crossover distortion
-
-✅ Stable operation from ±12 V supply
-
-✅ Wide bandwidth audio amplification
+The measured efficiency falls within the practical range expected for discrete Class-AB power amplifiers.
 
 ---
 
-# 🛠️ Tools Used
+## 🎼 Fourier Analysis & THD
 
-* LTspice
-* Analog Circuit Design
-* AC Analysis
-* Fourier Analysis
-* Transient Simulation
-* Power & Efficiency Analysis
+<p align="center">
+  <img src="images/fft_analysis.png" width="900">
+</p>
+
+**Figure 5:** Fourier spectrum of the amplifier output.
+
+### Fourier Results
+
+| Parameter | Value |
+|------------|---------|
+| Fundamental Frequency | 1 kHz |
+| Fundamental Amplitude | 6.99 V |
+| THD | 0.033 % |
+
+### Observation
+
+The low THD demonstrates:
+
+- Effective suppression of crossover distortion
+- Proper Class-AB biasing
+- Good linearity of the Darlington output stage
+- High-quality audio amplification
 
 ---
 
-# 🚀 Future Improvements
+## 📋 Performance Summary
 
-* PCB implementation
-* Thermal analysis of output transistors
-* Speaker protection circuitry
-* Tone control stage
-* Sziklai-pair output stage comparison
-* Closed-loop compensation optimization
-* Higher power output design
+| Parameter | Value |
+|------------|---------|
+| Supply Voltage | ±12 V |
+| Load Resistance | 8 Ω |
+| Voltage Gain | 8 V/V |
+| Voltage Gain (dB) | 18.06 dB |
+| Output Power | 3.99 W |
+| Input Power | 7.92 W |
+| Efficiency | 50.4 % |
+| THD | 0.033 % |
+| Output Stage | Complementary Darlington |
+| Bias Network | Three-Diode Class-AB |
 
 ---
 
-# 👨‍💻 Author
+## 🛠️ Tools Used
+
+- LTspice
+- Analog Circuit Design
+- Transient Simulation
+- Fourier Analysis
+- Power Analysis
+- Efficiency Evaluation
+
+---
+
+## 🚀 Future Improvements
+
+- PCB implementation
+- Thermal analysis of output transistors
+- Speaker protection circuitry
+- Tone control stage
+- Sziklai-pair output stage comparison
+- Higher power output design
+- Closed-loop stability optimization
+
+---
+
+## 📂 Repository Structure
+
+```text
+├── LTspice_Files
+│   ├── AUDIO_AMPLIFIER_CIRCUIT.asc
+│   └── AUDIO_AMPLIFIER_CIRCUIT.net
+│
+├── Images
+│   ├── schematic.png
+│   ├── transient_response.png
+│   ├── output_power.png
+│   ├── input_power.png
+│   └── fft_analysis.png
+│
+└── README.md
+```
+
+---
+
+## 👨‍💻 Author
 
 **Aditya**
 
