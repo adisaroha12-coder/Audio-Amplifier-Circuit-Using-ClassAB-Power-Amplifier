@@ -31,7 +31,8 @@ The objective of this project was to design and analyze a low-distortion audio p
 ## 📸 Circuit Schematic
 
 <p align="center">
-  <img src="images/schematic.png" width="900">
+  <img src="<img width="1197" height="627" alt="image" src="https://github.com/user-attachments/assets/209ad3e6-dcea-4c81-bb69-cddc93896f7b" />
+" width="900">
 </p>
 
 **Figure 1:** Complete LTspice schematic of the Complementary Darlington Class-AB Audio Power Amplifier.
