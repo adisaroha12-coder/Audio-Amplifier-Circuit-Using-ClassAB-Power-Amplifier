@@ -30,8 +30,8 @@ The objective of this project was to design and analyze a low-distortion audio p
 
 ## 📸 Circuit Schematic
 
-![Circuit Schematic](I<img width="1197" height="627" alt="image" src="https://github.com/user-attachments/assets/3ab86ed1-e148-4245-b571-feb4689882f0" />
-)
+I<img width="1197" height="627" alt="image" src="https://github.com/user-attachments/assets/3ab86ed1-e148-4245-b571-feb4689882f0" />
+
 
 
 
