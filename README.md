@@ -163,8 +163,9 @@ The amplifier delivers nearly 4 W of power to the load while maintaining low har
 
 ## 🔋 Supply Power Analysis
 
-<p align="center">
-  <img src="images/input_power.png" width="900">
+
+  <img width="1891" height="446" alt="image" src="https://github.com/user-attachments/assets/dda93de7-eab2-4d6a-bea1-d15777be59fd" />
+
 </p>
 
 **Figure 4:** Power drawn from the ±12 V supply rails.
