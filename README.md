@@ -120,7 +120,7 @@ The measured efficiency improved compared to a basic complementary emitter-follo
 
 ## 📊 Transient Analysis
 
-<
+
   <img width="1896" height="446" alt="image" src="https://github.com/user-attachments/assets/ee9d5f0f-4706-407a-b005-4607aedecfc1" />
 
 
