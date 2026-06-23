@@ -200,8 +200,9 @@ The measured efficiency falls within the practical range expected for discrete C
 
 ## 🎼 Fourier Analysis & THD
 
-<p align="center">
-  <img src="images/fft_analysis.png" width="900">
+
+  <img width="1572" height="622" alt="image" src="https://github.com/user-attachments/assets/2371fcf1-e606-457a-afb8-a4a961da7fc8" />
+
 </p>
 
 **Figure 5:** Fourier spectrum of the amplifier output.
