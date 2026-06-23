@@ -144,8 +144,9 @@ The amplifier successfully amplifies a 1 V peak input signal to approximately 8 
 
 ## ⚡ Output Power Analysis
 
-<p align="center">
-  <img src="images/output_power.png" width="900">
+
+  <img width="1896" height="445" alt="image" src="https://github.com/user-attachments/assets/7366a994-e034-480c-8471-028c9094910a" />
+
 </p>
 
 **Figure 3:** Instantaneous load power delivered to the 8 Ω speaker load.
