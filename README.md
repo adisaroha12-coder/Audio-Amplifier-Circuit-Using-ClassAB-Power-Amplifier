@@ -116,7 +116,8 @@ The complementary Darlington configuration was selected because it:
 
 # 📸 Circuit Schematic
 
-*(Insert your LTspice schematic here.)*
+*(<img width="1242" height="670" alt="image" src="https://github.com/user-attachments/assets/6a9a9472-150a-4001-89b8-58113f63fa15" />
+.)*
 
 **Figure 1:** Complete LTspice schematic of the Complementary Darlington Class-AB Audio Power Amplifier.
 
