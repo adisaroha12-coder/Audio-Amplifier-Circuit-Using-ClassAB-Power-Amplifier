@@ -139,7 +139,8 @@ The amplifier provides voltage amplification while maintaining excellent wavefor
 
 # ⚡ Output Power Analysis
 
-*(Insert output power waveform.)*
+<img width="1895" height="446" alt="image" src="https://github.com/user-attachments/assets/c976e5d2-ff34-44b4-9796-7c2187c5e720" />
+
 
 **Figure 3:** Instantaneous load power delivered to the 8 Ω speaker.
 
@@ -155,7 +156,8 @@ The amplifier delivers nearly **5 W** of continuous output power into an 8 Ω lo
 
 # 🔋 Supply Power Analysis
 
-*(Insert supply power waveform.)*
+<img width="1892" height="442" alt="image" src="https://github.com/user-attachments/assets/a5a2af6f-905e-4634-9537-4b6c81563c3f" />
+
 
 **Figure 4:** Total power drawn from the ±12 V supply rails.
 
@@ -195,7 +197,8 @@ The measured efficiency is consistent with the expected performance of a discret
 
 # 🎼 Fourier Analysis & THD
 
-*(Insert FFT image.)*
+<img width="1577" height="626" alt="image" src="https://github.com/user-attachments/assets/cf2b676f-42d4-43b4-a473-0b8726bc8182" />
+
 
 **Figure 5:** Fourier spectrum of the amplifier output.
 
