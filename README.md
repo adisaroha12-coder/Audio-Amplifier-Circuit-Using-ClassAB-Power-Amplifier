@@ -105,7 +105,6 @@ The complementary Darlington configuration was selected because it:
 # 📊 Analyses Performed
 
 * Transient Analysis
-* AC Frequency Response
 * Fourier (FFT) Analysis
 * Output Power Analysis
 * Supply Power Analysis
