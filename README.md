@@ -125,7 +125,8 @@ The complementary Darlington configuration was selected because it:
 
 # 📈 Transient Analysis
 
-*(Insert transient waveform image.)*
+<img width="1896" height="447" alt="image" src="https://github.com/user-attachments/assets/6620b6c8-67e8-4d43-b637-8ee8953f95ff" />
+
 
 **Figure 2:** Input and output waveforms at 1 kHz.
 
